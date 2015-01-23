@@ -210,6 +210,7 @@ static int ctrl_str_option(SSL_CONF_CTX *cctx, const char *cmd)
 #endif
 		SSL_FLAG_TBL_SRV("serverpref", SSL_OP_CIPHER_SERVER_PREFERENCE),
 		SSL_FLAG_TBL("legacy_renegotiation", SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION),
+		SSL_FLAG_TBL("no_scsv", SSL_OP_NO_SCSV),
 		SSL_FLAG_TBL_SRV("legacy_server_connect", SSL_OP_LEGACY_SERVER_CONNECT),
 		SSL_FLAG_TBL_SRV("no_resumption_on_reneg", SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION),
 		SSL_FLAG_TBL_SRV_INV("no_legacy_server_connect", SSL_OP_LEGACY_SERVER_CONNECT),

@@ -608,6 +608,8 @@ struct ssl_session_st
 #define SSL_OP_SINGLE_ECDH_USE				0x00080000L
 /* If set, always create a new key when using tmp_dh parameters */
 #define SSL_OP_SINGLE_DH_USE				0x00100000L
+/* If set, skip sending RENEGOTIATION_INFO_SCSV when handshake */
+#define SSL_OP_NO_SCSV					0x80000000L /* use last bit in unsigned long */
 /* Does nothing: retained for compatibiity */
 #define SSL_OP_EPHEMERAL_RSA				0x0
 /* Set on servers to choose the cipher according to the server's

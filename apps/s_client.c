@@ -370,6 +370,9 @@ static void sc_usage(void)
 #endif
  	BIO_printf(bio_err," -keymatexport label   - Export keying material using label\n");
  	BIO_printf(bio_err," -keymatexportlen len  - Export len bytes of keying material (default 20)\n");
+#ifdef OPENSSL_RI_DEBUG
+ 	BIO_printf(bio_err," -no_scsv          - turn off RENEGOTIATION_INFO SCSV support to test RFC5746 implementation\n");
+#endif
 	}
 
 #ifndef OPENSSL_NO_TLSEXT

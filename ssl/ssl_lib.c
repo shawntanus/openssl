@@ -1502,14 +1502,23 @@ int ssl_cipher_list_to_bytes(SSL *s,STACK_OF(SSL_CIPHER) *sk,unsigned char *p,
 		{
 		if (empty_reneg_info_scsv)
 			{
-			static SSL_CIPHER scsv =
+		       	if (!(s->options & SSL_OP_NO_SCSV))
 				{
-				0, NULL, SSL3_CK_SCSV, 0, 0, 0, 0, 0, 0, 0, 0, 0
-				};
-			j = put_cb(&scsv,p);
-			p+=j;
+				static SSL_CIPHER scsv =
+					{
+					0, NULL, SSL3_CK_SCSV, 0, 0, 0, 0, 0, 0, 0, 0, 0
+					};
+				j = put_cb(&scsv,p);
+				p+=j;
 #ifdef OPENSSL_RI_DEBUG
-			fprintf(stderr, "TLS_EMPTY_RENEGOTIATION_INFO_SCSV sent by client\n");
+				fprintf(stderr, "TLS_EMPTY_RENEGOTIATION_INFO_SCSV sent by client\n");
+#endif
+				}
+#ifdef OPENSSL_RI_DEBUG
+			else
+				{
+				fprintf(stderr, "TLS_EMPTY_RENEGOTIATION_INFO_SCSV is skipped\n");
+				}
 #endif
 			}
 		if (s->mode & SSL_MODE_SEND_FALLBACK_SCSV)

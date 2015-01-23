@@ -1189,7 +1189,7 @@ unsigned char *ssl_add_clienthello_tlsext(SSL *s, unsigned char *buf, unsigned c
 	if (ret>=limit) return NULL; /* this really never occurs, but ... */
 
         /* Add RI if renegotiating */
-        if (s->renegotiate)
+        if (s->renegotiate && !(s->options & SSL_OP_NO_SCSV))
           {
           int el;
 
